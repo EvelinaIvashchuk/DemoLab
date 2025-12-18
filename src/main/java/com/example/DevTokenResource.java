@@ -1,6 +1,7 @@
 package com.example;
 
 import io.smallrye.jwt.build.Jwt;
+import io.smallrye.jwt.algorithm.SignatureAlgorithm;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
@@ -32,6 +33,8 @@ public class DevTokenResource {
                 .audience("backend-service")
                 .claim("preferred_username", username)
                 .expiresIn(Duration.ofHours(1))
+                .jws()
+                .algorithm(SignatureAlgorithm.HS256)
                 .sign();
     }
 }
