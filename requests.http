@@ -1,0 +1,14 @@
+### Get a dev token (HS256) — available only in dev profile
+GET http://localhost:8080/dev/token
+
+### Call protected endpoint with the token
+POST http://localhost:8080/secure/echo
+Authorization: Bearer {{TOKEN}}
+Content-Type: text/plain
+
+Привіт світ
+
+### How to use
+# 1) Start app in dev:  mvnw quarkus:dev
+# 2) Run the first request to get a token and copy it to {{TOKEN}}
+# 3) Run the POST request — expect: user=alice; received=Привіт світ
